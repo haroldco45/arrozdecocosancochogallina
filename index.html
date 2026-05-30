@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arroz de Cabeza de Cerdo</title>
+    
+    <meta name="theme-color" content="#8B5A2B">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ArrozCerdo">
+    
+    <link rel="manifest" href='data:application/json,{"short_name":"ArrozCerdo","name":"Arroz de Cabeza de Cerdo","icons":[{"src":"https://cdn-icons-png.flaticon.com/512/3462/3462228.png","type":"image/png","sizes":"512x512","purpose":"any maskable"}],"start_url":".","background_color":"%23F9F6F0","theme_color":"%238B5A2B","display":"standalone","orientation":"portrait"}'>
+
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --primary-dark: #388E3C;
+            --secondary: #8B5A2B;
+            --light: #F9F6F0;
+            --dark: #2E2520;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--secondary), var(--dark));
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .badge-tradicion {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary);
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .product-details {
+            background: #F5EFEB;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--secondary);
+            text-align: left;
+        }
+
+        .product-details ul {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .product-details li {
+            margin: 6px 0;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-details li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .price-tag {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin: 15px 0;
+        }
+
+        .price-tag span {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #666;
+        }
+
+        .quantity-control {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .btn-qty {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.1s;
+        }
+
+        .btn-qty:active {
+            transform: scale(0.9);
+        }
+
+        #qty {
+            font-size: 1.5rem;
+            font-weight: bold;
+            min-width: 30px;
+        }
+
+        .btn-order {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 16px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: background 0.2s;
+        }
+
+        .btn-order:hover {
+            background-color: #1ebd59;
+        }
+
+        #install-pwa {
+            display: none;
+            background: var(--dark);
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 20px 0 10px;
+            font-size: 0.75rem;
+            color: #888;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="install-pwa">✨ Instalar Aplicación en tu Pantalla</button>
+
+    <div class="container">
+        <div class="hero">
+            <span class="badge-tradicion">100% Casero</span>
+            <h1>¡Hagan sus Pedidos!</h1>
+            <p>El auténtico sabor tradicional</p>
+        </div>
+
+        <div class="content">
+            <div class="product-details">
+                <h3>Arroz de Cabeza de Cerdo</h3>
+                <ul>
+                    <li>Con Yuca Cocida a la perfección</li>
+                    <li>Envuelto en Hoja de Viao original</li>
+                    <li>Porción generosa y bien sazonada</li>
+                </ul>
+            </div>
+
+            <div class="price-tag">
+                $10.000 <span style="display: block; font-size: 1rem; margin-top: -5px;">por porción</span>
+            </div>
+
+            <div class="quantity-control">
+                <button class="btn-qty" onclick="changeQty(-1)">-</button>
+                <span id="qty">1</span>
+                <button class="btn-qty" onclick="changeQty(1)">+</button>
+            </div>
+
+            <button class="btn-order" onclick="sendOrder()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.66.986 3.288 1.447 5.358 1.448 5.517 0 10.003-4.48 10.006-9.995.002-2.672-1.03-5.184-2.906-7.062C17.224 1.668 14.724 1.026 12.01 1.026 6.49 1.026 2.007 5.507 2.004 11.025c-.001 2.112.564 4.18 1.635 5.954l-.988 3.605 3.693-.969zm11.722-4.664c-.312-.156-1.844-.91-2.13-.1.015-.287-.156-.412-.365-.412-.208 0-.417.104-.521.26-.104.156-.416.416-.572.52-.156.104-.312.104-.624-.052-.312-.156-1.316-.485-2.507-1.548-.926-.826-1.55-1.846-1.732-2.158-.182-.312-.02-.48.136-.635.14-.14.312-.364.468-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.624-1.503-.854-2.054-.226-.543-.454-.47-.624-.47-.16 0-.344-.017-.528-.017-.184 0-.485.068-.74.347-.253.28-1.04 1.016-1.04 2.479 0 1.462 1.064 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.844-.754 2.103-1.443.259-.688.259-1.277.182-1.404-.078-.126-.286-.208-.597-.364z"/></svg>
+                Pedir por WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Vibras Positivas. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        let quantity = 1;
+        function changeQty(amount) {
+            quantity += amount;
+            if (quantity < 1) quantity = 1;
+            document.getElementById('qty').innerText = quantity;
+        }
+
+        function sendOrder() {
+            const phone = "573145104768";
+            const pricePerUnit = 10000;
+            const total = quantity * pricePerUnit;
+            
+            const message =
